@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import * as userService from '../services/userService';
+import { User } from '../models/User';
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const user: unknown = req.body;
+    const user: User = req.body;
     const newUser = await userService.createUser(user);
     res.status(201).json(newUser);
   } catch (error) {
